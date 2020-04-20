@@ -44,3 +44,15 @@ image from SLack and just use the `extract.py` script:
 ```sh
 $ python extract.py file-to-send-to-slack.png
 ```
+
+## Improvements
+
+The ZIP archive is embedded as-is, and thus anyone who has access to the
+image on Slack and knows how to extract the content from the metadata
+will have access to it. It also means that smarter DLP products might
+be able to pick up the ZIP signature embedded in the image and prevent
+it from being downloaded or uploaded.
+
+Both of these issues could be solved by encrypting the generated archive.
+This can be easily achieved by using a module such as
+[cryptography](https://cryptography.io/en/latest/).
